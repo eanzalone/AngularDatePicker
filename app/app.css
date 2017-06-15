@@ -1,25 +1,35 @@
-/* app css stylesheet */
+body {
+  background-color: #F8F9F9; }
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
+#content {
+  background-color: #F8F9F9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center; }
+  #content #datePicker button {
+    background-color: #7986cb;
+    color: white; }
+  #content #timePicker div.layout-align-start-start.layout-row {
+    background-color: #7986cb;
+    border-radius: 15px; }
+    #content #timePicker div.layout-align-start-start.layout-row button > md-icon, #content #timePicker div.layout-align-start-start.layout-row md-input-container > input {
+      color: white; }
+  #content #timePicker .disabled > div.layout-align-start-start.layout-row {
+    background-color: rgba(255, 64, 129, 0.5);
+    border-radius: 15px; }
+    #content #timePicker .disabled > div.layout-align-start-start.layout-row button > md-icon, #content #timePicker .disabled > div.layout-align-start-start.layout-row md-input-container > input {
+      color: #ff4081; }
+  #content #timePicker md-input-container {
+    margin-bottom: 0; }
+  #content #timePicker :active, #content #timePicker :focus {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none; }
+  #content #dateAndTime {
+    width: 300px;
+    height: 200px; }
 
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
+/*# sourceMappingURL=app.css.map */

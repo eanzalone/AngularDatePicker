@@ -1,0 +1,52 @@
+// VARIABLES
+$background-color: #F8F9F9;
+$base-color: rgba(121,134,203, 1);
+$highlight-color: rgba(255,64,129, .5);
+
+// STYLES
+body {
+    background-color: $background-color;
+}
+#content {
+    background-color: $background-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    #datePicker {
+        button {
+            background-color: $base-color;
+            color: white;
+        }
+    }
+    #timePicker {
+        div.layout-align-start-start.layout-row {
+            background-color: $base-color;
+            border-radius: 15px;
+            button > md-icon, md-input-container > input {
+                color: white;
+            }
+        }
+        .disabled > div.layout-align-start-start.layout-row {
+            background-color: $highlight-color;
+            border-radius: 15px;
+            button > md-icon, md-input-container > input {
+                color: rgb(255,64,129);
+            }
+        }
+        md-input-container {
+            margin-bottom: 0;
+        }
+        :active, :focus {
+            outline:0;
+            border:none;
+            -moz-outline-style: none;
+        }
+    }
+    #dateAndTime {
+        width: 300px;
+        height: 200px;
+    }
+}

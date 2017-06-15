@@ -23,45 +23,28 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <!--<div ng-controller="ViewCtrl as ctrl">
-    <div ng-repeat="testObject in ctrl.testObject">
-      <p>{{testObject.date}}</p>
-      <p>{{testObject.time}}</p>
-    </div>
-
-
-    <h4>Opening the calendar when the input is focused</h4>
-    <md-datepicker id="target" ng-model="ctrl.myDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
-  </div>-->
-
-  <md-content id="content" layout="column" flex ng-controller="MainCtrl as ctrl">
-    <!--<div layout="row" ng-form="demoForm">-->
-    <div layout="row">
-      <div layout-padding>
-        <h2>Date picker</h2>
-        <div>
-          <h4 class="md-subhead">Using $mdpDatePicker service</h4>
-          <md-button class="md-raised md-warn" ng-click="ctrl.showDatePicker($event)" aria-label="show picker">{{selectedDate ? (selectedDate | date:'shortDate') : "Select Date"}}</md-button>
-          <p>
-            {{ selectedDate | date:'shortDate' }}
-            <br>
-            {{ currentDate | date:'shortDate' }}
-          </p>
-        </div>
+  <md-content id="content" layout="column" ng-controller="MainCtrl as ctrl">
+    <div id="datePicker">
+      <h2>Date Picker</h2>
+      <div>
+        <md-button ng-click="ctrl.showDatePicker($event)" aria-label="show picker">{{holdDateAndTime.date ? "Now Select A Time" : "Select Date"}}</md-button>
       </div>
-      <div layout-padding>
-        <h2>Time picker</h2>
-        <div>
-          <h4 class="md-subhead">Standard time picker</h4>
-        
-          <mdp-time-picker mdp-disabled="selectedDate ? true : true" ng-model="currentDate" ng-click="ctrl.showTimePicker($event)"></mdp-time-picker>
-
-          <p>
-            {{ selectedTime | date:'HH:mm' }}
-          </p>
-        </div>
-
-        
+    </div>
+    <div id="timePicker">
+      <h2>Time Picker</h2>
+      <mdp-time-picker mdp-disabled="true" ng-model="currentDate" ng-class='{disabled: disabled}' ng-click="disabled ||ctrl.showTimePicker($event)"></mdp-time-picker>
+    </div>
+    <div id="dateAndTime">
+      <div ng-show="dateAndTime.time">
+        <h3>Selected Date and Time:</h3>
+        <p>
+          {{ dateAndTime.date | date:'shortDate' }} 
+          {{ dateAndTime.time | date:'hh:mm a' }} 
+          {{ selectedTZ.abbv }}
+        </p>
+        <md-select ng-model="selectedTZ" ng-model-options="{trackBy: '$value.id'}" aria-label="time zones" placeholder="Change Time Zone">
+          <md-option ng-value="timeZone" ng-repeat="timeZone in timeZones">{{ timeZone.area }}</md-option>
+        </md-select>
       </div>
     </div>
   </md-content>
@@ -72,6 +55,7 @@
   crossorigin="anonymous"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/moment-timezone/moment-timezone.js"></script>
   <script src="bower_components/md-pickers/dist/mdPickers.js"></script>
   <!-- Angular Material requires Angular.js Libraries -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
